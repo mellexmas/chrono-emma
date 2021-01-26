@@ -7,15 +7,15 @@
   <div class="card">
     <div class="card-body">
       <div class="chronoBox">
-        Mon chrono sera la
-        <span class="time" id="display">00:00:00</span>
+        Mon chrono : 
+        <span class="time" id="display"> {{time}} </span>
       </div>
       <div>
-        <button type="button" id="btnStart" (click)="start()" *ngIf="!isStarted"> Start </button>
-        <button type="button" id="btnErase" (click)="pause()" *ngIf="isStarted && !isPaused"> Pause </button>
-        <button type="button" id="btnSave"*ngIf="isStarted && !isPaused"> Keep </button>
+        <button type="button" id="btnStart"  (click)="start()" *ngIf="!isStarted"> Start </button>
+        <button type="button" id="btnErase"  (click)="pause()" *ngIf="isStarted && !isPaused"> Pause </button>
+        <button type="button" id="btnSave"   *ngIf="isStarted && !isPaused"> Keep </button>
         <button type="button" id="btnContinue"(click)="continue()" *ngIf="isStarted && isPaused"> Continue </button>
-        <button type="button" id="btnClear"*ngIf="isStarted && isPaused"> Clear </button>
+        <button type="button" id="btnClear" (click)="stop()" *ngIf="isStarted && isPaused"> Clear </button>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@
 
             </th>
             <td>00 : 00 : 00 sec</td>
-            <td> <input type="mail"></td>
+            <td> <input type="email"class="form-control"></td>
 
           </tr>
           <tr>
@@ -50,7 +50,7 @@
             </th>
             <td>00 : 00 : 00 sec</td>
             <td>
-              <input type="mail">
+              <input type="email" class="form-control">
             </td>
 
           </tr>
@@ -59,7 +59,7 @@
               <button>x</button>
             </th>
             <td>00 : 00 : 00 sec</td>
-            <td> <input type="mail"></td>
+            <td> <input type="email" class="form-control"></td>
 
           </tr>
         </tbody>
