@@ -13,7 +13,7 @@
       <div>
         <button type="button" id="btnStart"  (click)="start()" *ngIf="!isStarted"> Start </button>
         <button type="button" id="btnErase"  (click)="pause()" *ngIf="isStarted && !isPaused"> Pause </button>
-        <button type="button" id="btnSave"   *ngIf="isStarted && !isPaused"> Keep </button>
+        <button type="button" id="btnSave"   (click)="keep()" *ngIf="isStarted && !isPaused"> Keep </button>
         <button type="button" id="btnContinue"(click)="continue()" *ngIf="isStarted && isPaused"> Continue </button>
         <button type="button" id="btnClear" (click)="stop()" *ngIf="isStarted && isPaused"> Clear </button>
       </div>
@@ -23,7 +23,7 @@
 
 
 
-  <div class="card">
+  <div class="card" *ngIf="tableNotEmpty">
     <div class="card-body">
       <table class="table table-bordered table-hover">
         <thead>
@@ -35,20 +35,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr *ngFor="let item of result; let itemIndex = index">
             <th scope="row">
-              <button>x</button>
-
+              <button (click)="removeItem(itemIndex)">x</button>
             </th>
-            <td>00 : 00 : 00 sec</td>
-            <td> <input type="email"class="form-control"></td>
-
+            <td>{{item.time}}</td>
+            <td> <input type="text"class="form-control" [attr.for]="'number-' + index" (keyup)="addText($event)"></td>
           </tr>
-          <tr>
+
+         <!-- <tr>
             <th scope="row">
-              <button>x</button>
+              <button (click)="remove()">x</button>
             </th>
-            <td>00 : 00 : 00 sec</td>
+            <td>{{this.result[1]}}</td>
             <td>
               <input type="email" class="form-control">
             </td>
@@ -58,10 +57,10 @@
             <th scope="row">
               <button>x</button>
             </th>
-            <td>00 : 00 : 00 sec</td>
+            <td>{{this.result[2]}}</td>
             <td> <input type="email" class="form-control"></td>
 
-          </tr>
+          </tr>-->
         </tbody>
       </table>
     </div>
